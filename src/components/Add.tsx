@@ -1,5 +1,3 @@
-import React from 'react';
-
 export function Add() {
     const handleAdd = () => {
         console.log('Add new track');

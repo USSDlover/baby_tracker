@@ -1,15 +1,24 @@
-import React from 'react';
+import {createContext, ReactNode, useState, useContext, useEffect} from 'react';
 
-export const TrackerContext = React.createContext([]);
+type Track = {
+    type: string;
+    time: Date;
+};
 
-const todayTracks = [[
+export const TrackerContext = createContext<Array<Track>>([]);
+
+const todayTracks = [
     { type: 'feed', time: new Date() },
     { type: 'sleep', time: new Date() },
     { type: 'pop', time: new Date() },
-]];
+];
 
-const TrackerProvider = ({ children }) => {
-    const [tracks] = React.useState(todayTracks);
+const TrackerProvider = ({ children }: {children: ReactNode}) => {
+    const [tracks, setTracks] = useState<Track[]>([]);
+
+    useEffect(() => {
+        setTracks(todayTracks);
+    }, []);
 
     return (
         <TrackerContext.Provider value={tracks}>
@@ -18,6 +27,7 @@ const TrackerProvider = ({ children }) => {
     );
 }
 
-export const useTracksContext = () => React.useContext(TrackerContext);
+// eslint-disable-next-line react-refresh/only-export-components
+export const useTracksContext = () => useContext<Track[]>(TrackerContext);
 
 export default TrackerProvider;
