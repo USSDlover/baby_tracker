@@ -1,6 +1,19 @@
+import { useTrackerDispatchContext } from '../providers/TrackerProvider.tsx';
+
 export function Add() {
+    const dispatch = useTrackerDispatchContext();
+
     const handleAdd = () => {
         console.log('Add new track');
+        if (dispatch) {
+            dispatch({
+                type: 'add',
+                payload: {
+                    type: 'feed',
+                    time: new Date()
+                }
+            });
+        }
     }
 
     return <button

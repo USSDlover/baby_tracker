@@ -1,33 +1,33 @@
-import {createContext, ReactNode, useState, useContext, useEffect} from 'react';
+import { createContext, Dispatch, ReactNode, useContext, useReducer } from 'react';
 
 type Track = {
     type: string;
     time: Date;
 };
 
-export const TrackerContext = createContext<Array<Track>>([]);
+const TrackerContext = createContext<Array<Track>>([]);
+const TrackerDispatchContext = createContext<Dispatch<{ type: 'add', payload: Track }> | null>(null);
 
-const todayTracks = [
-    { type: 'feed', time: new Date() },
-    { type: 'sleep', time: new Date() },
-    { type: 'pop', time: new Date() },
-];
+const tracksReducer = (state: Track[], action: { type: 'add', payload: Track }): Track[] => {
+    if (action.type === 'add') { return state.concat(action.payload) }
+    throw Error('The action type doesn\'t match');
+}
 
 const TrackerProvider = ({ children }: {children: ReactNode}) => {
-    const [tracks, setTracks] = useState<Track[]>([]);
-
-    useEffect(() => {
-        setTracks(todayTracks);
-    }, []);
+    const [tracks, dispatch] = useReducer(tracksReducer, []);
 
     return (
         <TrackerContext.Provider value={tracks}>
-            {children}
+            <TrackerDispatchContext.Provider value={dispatch}>
+                {children}
+            </TrackerDispatchContext.Provider>
         </TrackerContext.Provider>
     );
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useTracksContext = () => useContext<Track[]>(TrackerContext);
+// eslint-disable-next-line react-refresh/only-export-components
+export const useTrackerDispatchContext = () => useContext(TrackerDispatchContext);
 
 export default TrackerProvider;
