@@ -1,10 +1,20 @@
 import { useTrackerDispatchContext } from '../providers/TrackerProvider.tsx';
+import styled from 'styled-components';
+
+const AddButtonComponent = styled.button`
+    background-color: rgb(22, 155, 12);
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    color: white;
+    padding: .75rem 1.5rem;
+    border-radius: 5px;
+`;
 
 export function Add() {
     const dispatch = useTrackerDispatchContext();
 
     const handleAdd = () => {
-        console.log('Add new track');
         if (dispatch) {
             dispatch({
                 type: 'add',
@@ -16,8 +26,5 @@ export function Add() {
         }
     }
 
-    return <button
-        className={'fixed bottom-3 right-3 bg-green-600 text-white rounded px-5 py-3'}
-        onClick={handleAdd}
-    >Add</button>
+    return <AddButtonComponent onClick={handleAdd}>Add</AddButtonComponent>
 }
