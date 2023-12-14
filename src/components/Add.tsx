@@ -1,5 +1,6 @@
 import { useTrackerDispatchContext } from '../providers/TrackerProvider.tsx';
 import styled from 'styled-components';
+import TimeAddIcon from './TimeAddIcon.tsx';
 
 const AddButtonComponent = styled.button`
     background-color: rgb(22, 155, 12);
@@ -27,5 +28,7 @@ export function Add() {
         }
     }
 
-    return <AddButtonComponent onClick={handleAdd}>Add</AddButtonComponent>
+    return <AddButtonComponent onClick={handleAdd}>
+        <TimeAddIcon />
+    </AddButtonComponent>
 }
