@@ -1,4 +1,13 @@
+import styled from 'styled-components';
 import { useTracksContext } from '../providers/TrackerProvider.tsx';
+import FeedTrack from './FeedTrack.tsx';
+
+const ListWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+`;
 
 export function List() {
     const tracks = useTracksContext();
@@ -6,14 +15,10 @@ export function List() {
         return <div>Missing</div>;
     }
     return (
-        <div>
-            <h3 className={'text-3xl'}>Tracked items</h3>
+        <ListWrapper>
             {tracks.map((track) => {
-                return <div key={track.time.getTime()}>
-                    <h6 className={'text'}>{track.type}</h6>
-                    <p className="text">{track.time.toTimeString()}</p>
-                </div>;
+                return <FeedTrack key={track.time.getTime()} time={track.time} amount={track.amount} />;
             })}
-        </div>
+        </ListWrapper>
     );
 }
