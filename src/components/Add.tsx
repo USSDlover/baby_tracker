@@ -20,7 +20,8 @@ export function Add() {
                 type: 'add',
                 payload: {
                     type: 'feed',
-                    time: new Date()
+                    time: new Date(),
+                    amount: 100
                 }
             });
         }

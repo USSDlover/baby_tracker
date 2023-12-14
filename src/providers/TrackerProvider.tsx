@@ -3,6 +3,7 @@ import { createContext, Dispatch, ReactNode, useContext, useReducer } from 'reac
 type Track = {
     type: string;
     time: Date;
+    amount: number;
 };
 
 const TrackerContext = createContext<Array<Track>>([]);
