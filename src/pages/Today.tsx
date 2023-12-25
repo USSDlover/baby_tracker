@@ -8,6 +8,7 @@ const ContentWrapper = styled.div`
     position: relative;
     flex-direction: column;
     flex-wrap: wrap;
+    padding-bottom: 60px;
 `;
 
 export const Today = () => {
