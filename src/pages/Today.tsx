@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { lazy } from 'react';
 
-import { List } from '../components/List.tsx';
-import { Add } from '../components/Add.tsx';
+const List = lazy(() => import('../components/List.tsx'));
+const Add = lazy(() => import('../components/Add.tsx'));
 
 const ContentWrapper = styled.div`
     display: flex;

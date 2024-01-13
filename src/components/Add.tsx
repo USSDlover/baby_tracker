@@ -12,7 +12,7 @@ const AddButtonComponent = styled.button`
     border-radius: 5px;
 `;
 
-export function Add() {
+export default function Add() {
     const dispatch = useTrackerDispatchContext();
 
     const handleAdd = () => {

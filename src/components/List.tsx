@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useTracksContext } from '../providers/TrackerProvider.tsx';
-import FeedTrack from './FeedTrack.tsx';
+import { lazy, Suspense } from 'react';
+
+const FeedTrack = lazy(() => import('./FeedTrack.tsx'))
 
 const ListWrapper = styled.div`
     display: flex;
@@ -9,16 +11,18 @@ const ListWrapper = styled.div`
     gap: 15px;
 `;
 
-export function List() {
+export default function List() {
     const tracks = useTracksContext();
     if (!tracks) {
         return <div>Missing</div>;
     }
     return (
         <ListWrapper>
-            {tracks.map((track) => {
-                return <FeedTrack key={track.time.getTime()} time={track.time} amount={track.amount} />;
-            })}
+            <Suspense fallback={'Loading...' }>
+                {tracks.map((track) => {
+                    return <FeedTrack key={track.time.getTime()} time={track.time} amount={track.amount} />;
+                })}
+            </Suspense>
         </ListWrapper>
     );
 }
