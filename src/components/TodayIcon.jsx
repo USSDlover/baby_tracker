@@ -1,8 +1,10 @@
 export default function TodayIcon({width = 25, height = 25}) {
     return (
         <svg width={width} height={height} fill="#000000" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_bgCarrier"></g>
+            {/*<g id="SVGRepo_bgCarrier" stroke-width="0"></g>*/}
+            <g id="SVGRepo_tracerCarrier"></g>
+            {/*<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>*/}
             <g id="SVGRepo_iconCarrier">
                 <path
                     d="M416,64H400V48.45c0-8.61-6.62-16-15.23-16.43A16,16,0,0,0,368,48V64H144V48.45c0-8.61-6.62-16-15.23-16.43A16,16,0,0,0,112,48V64H96a64,64,0,0,0-64,64v12a4,4,0,0,0,4,4H476a4,4,0,0,0,4-4V128A64,64,0,0,0,416,64Z"></path>
