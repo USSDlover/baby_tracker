@@ -11,13 +11,26 @@ const ContentWrapper = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     padding-bottom: 60px;
+    & > div:first-child {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin-bottom: 1rem;
+    }
+    & .list-wrapper {
+        padding-inline: .75rem;
+        padding-block-end: 4rem;
+    }
 `;
 
 export const Today = () => {
     return (
         <ContentWrapper>
             <TodayAndTotal />
-            <List />
+            <div className="list-wrapper">
+                <List />
+            </div>
             <Add />
         </ContentWrapper>
     )

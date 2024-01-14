@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import TimeAddIcon from './TimeAddIcon.tsx';
 
 const AddButtonComponent = styled.button`
-    background-color: rgb(22, 155, 12);
+    background-color: white;
     position: fixed;
-    bottom: 3rem;
-    right: 3rem;
+    bottom: 4rem;
+    right: 1rem;
     color: white;
-    padding: .75rem 1.5rem;
     border-radius: 5px;
 `;
 
@@ -29,6 +28,6 @@ export default function Add() {
     }
 
     return <AddButtonComponent onClick={handleAdd}>
-        <TimeAddIcon />
+        <TimeAddIcon fill='dodgerblue' width='35px' height='35px' />
     </AddButtonComponent>
 }

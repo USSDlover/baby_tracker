@@ -9,7 +9,8 @@ const ToolbarDiv = styled.div`
     padding: 1rem;
     font-weight: bold;
     gap: .5rem;
-    box-shadow: 0 -2px 15px 0 lightslategray;
+    box-shadow: 0 -2px 15px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
 `;
 
 export default  function TodayAndTotal() {
