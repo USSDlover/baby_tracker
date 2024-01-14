@@ -20,7 +20,7 @@ export default function List() {
         <ListWrapper>
             <Suspense fallback={'Loading...' }>
                 {tracks.map((track) => {
-                    return <FeedTrack key={track.time.getTime()} time={track.time} amount={track.amount} />;
+                    return <FeedTrack track={track} key={track.time.getTime()} time={track.time} amount={track.amount} />;
                 })}
             </Suspense>
         </ListWrapper>

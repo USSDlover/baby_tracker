@@ -15,13 +15,14 @@ export default function Add() {
     const dispatch = useTrackerDispatchContext();
 
     const handleAdd = () => {
+        let amount = prompt('لطفا مقدار نوشیده شده را وارد کنید:');
         if (dispatch) {
             dispatch({
                 type: 'add',
                 payload: {
                     type: 'feed',
                     time: new Date(),
-                    amount: 100
+                    amount: Number(amount) || 0
                 }
             });
         }

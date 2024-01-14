@@ -1,16 +1,27 @@
 import { createContext, Dispatch, ReactNode, useContext, useReducer } from 'react';
 
-type Track = {
+export type Track = {
+    id?: number;
     type: string;
     time: Date;
     amount: number;
 };
 
 const TrackerContext = createContext<Array<Track>>([]);
-const TrackerDispatchContext = createContext<Dispatch<{ type: 'add', payload: Track }> | null>(null);
+const TrackerDispatchContext = createContext<Dispatch<{ type: 'add' | 'delete', payload: Track }> | null>(null);
 
-const tracksReducer = (state: Track[], action: { type: 'add', payload: Track }): Track[] => {
-    if (action.type === 'add') { return state.concat(action.payload) }
+const tracksReducer = (state: Track[], action: { type: 'add' | 'delete', payload: Track }): Track[] => {
+    if (action.type === 'add') {
+        action.payload.id = new Date().getTime();
+        return state.concat(action.payload);
+    }
+    if (action.type === 'delete') {
+        if (action.payload) {
+            return state.filter(item => item.id !== action.payload.id);
+        } else {
+            return state;
+        }
+    }
     throw Error('The action type doesn\'t match');
 }
 
