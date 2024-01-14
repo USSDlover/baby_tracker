@@ -1,7 +1,6 @@
 import { useTracksContext } from '../providers/TrackerProvider.tsx';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import moment from 'moment';
 
 const ToolbarDiv = styled.div`
     width: 100%;
@@ -16,7 +15,7 @@ const ToolbarDiv = styled.div`
 export default  function TodayAndTotal() {
     const tracks = useTracksContext();
     const [totalAmount, setTotalAmount] = useState(0);
-    const today = moment().format('LLLL')
+    const today = new Intl.DateTimeFormat('fa-IR', { dateStyle: 'full' }).format(new Date())
 
     useEffect(() => {
         if (tracks.length > 0) {
